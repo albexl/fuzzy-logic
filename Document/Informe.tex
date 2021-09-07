@@ -1,0 +1,71 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%							MORFOLOGIA MATEMATICA             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[12pt]{article}
+
+\usepackage[latin1]{inputenc}
+
+\usepackage[spanish]{babel}
+
+% Paquetes de la AMS:
+\usepackage[total={6in,9.8in},top=0.50in, left=1in, right=1in]{geometry}
+\usepackage{amsmath, amsthm, amsfonts}
+\usepackage{graphics}
+\usepackage{float}
+\usepackage{epsfig}
+\usepackage{amssymb}
+\usepackage{dsfont}
+\usepackage{latexsym}
+\usepackage{newlfont}
+\usepackage{epstopdf}
+\usepackage{amsthm}
+\usepackage{epsfig}
+\usepackage{caption}
+\usepackage{multirow}
+\usepackage[colorlinks]{hyperref}
+\usepackage[x11names,table]{xcolor}
+\usepackage{graphics}
+\usepackage{wrapfig}
+\usepackage[rflt]{floatflt}
+\usepackage{multicol}
+\usepackage{listings} \lstset {language = C++, basicstyle=\bfseries\ttfamily, keywordstyle = \color{blue}, commentstyle = \bf\color{brown}}
+
+
+\renewcommand{\labelenumi}{$\bullet$}
+
+\title{\bf\huge Simulaci\'on \\L\'ogica Difusa}
+\author{\Large Alberto Gonz\'alez Rosales\\
+	\large {Grupo C-411}
+	}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Caracter\'isticas del Sistema de Inferencia Difusa Propuesto}
+
+Este trabajo tiene como fin la implementaci\'on de un Sistema de Inferencia Difusa. La idea es lograr un sistema de inferencia que pueda ser aplicado a alg\'un problema real.
+
+Para la confecci\'on de este proyecto se dividi\'o el mismo en dos partes, una encargada del n\'ucleo de l\'ogica difusa, donde se encuentra la definici\'on de variable \emph{difusa} y de valor lingu\'istico; y la otra referente al mecanismo de evaluaci\'on de reglas y condiciones binarias y unarias.
+
+En la parte del n\'ucleo de l\'ogica difusa se implement\'o \emph{valor lingu\'istico} como una clase que contaba con una funci\'on de pertenencia. Por su parte, \emph{variable difusa} contaba con un valor, un dominio("fr\'io", "caliente", "templado") por ejemplo, y los m\'etodos de \emph{defuzzyfication}, as\'i como opciones para cambiar los valores o evaluar el valor actual en alg\'un estado espec\'ifico.
+
+En la secci\'on de evaluaci\'on se cre\'o una jerarqu\'ia sencilla que permitiera evaluar expresiones binarias y unarias. Existe una clase padre que cuenta con un \emph{evaluador} que indica como evaluar el estado actual, esto permite que quien use la aplicaci\'on tenga la opci\'on de escoger el m\'etodo de agregaci\'on que desee. Aqu\'i tambi\'en se cuenta con una clase que caracteriza las reglas, la cual cuenta con un campo \emph{condici\'on} y otro \emph{conclusi\'on}; adem\'as existe otra clase que se denomin\'o experimento, la cual no es m\'as que un conjunto de reglas y una variable de inter\'es a analizar.
+
+\section{Ideas Principales}
+
+Se implementaron todos los m\'etodos de \emph{defuzzyfication} vistos en conferencia(centroide, bisecci\'on y m\'aximo a la derecha), y se dej\'o la opci\'on de que el usuario fuera capaz de escoger el m\'etodo de agregaci\'on que deseara. Para la creaci\'on del experimento o programa hay que definir el conjunto de condiciones y variables que intervienen, as\'i como la variable objetivo en que se est\'e interesado. Cada condici\'on tiene su precedente y su consecuente, el cual no es m\'as que el estado que debe tomar la variable de inter\'es.
+
+\section{Problema a Resolver}
+
+El problema a resolver es el siguiente:
+
+Se tiene un servidor del cual se conoce su temperatura y capacidad de procesamiento. Lo que se quiere determinar es cuanto tiene que variar esta \'ultima en funci\'on de la capacidad de procesamiento y temperatura actuales. Nuestra variable de inter\'es es el cambio de la capacidad de procesamiento el cual, en dependencia de la temperatura y la capacidad de procesamiento, puede ser \emph{Incrementar}, \emph{Mantener} y \emph{Disminuir}. La temperatura puede ser \emph{Caliente}, \emph{Fr\'ia} o \emph{Media}. La capacidad de procesamiento puede ser \emph{Alta}, \emph{Baja} o \emph{Media}.
+
+\section{Consideraciones finales}
+
+Los m\'etodos de agregaci\'on probados fueron los de \emph{Mamdani} y \emph{Takagi-Sugeno-Kang}. Se prob\'o con todos los m\'etodos de \emph{defuzzyfication} obteni\'endose resultados desiguales con cada uno de ellos. Los resultados m\'as confiables se lograron cuando se aplic\'o el m\'etodo del centroide.
+
+
+\end{document}
